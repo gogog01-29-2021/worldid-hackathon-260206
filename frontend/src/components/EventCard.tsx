@@ -1,4 +1,4 @@
-import { Event } from '../hooks/useEvents';
+import type { Event } from '../hooks/useEvents';
 import { Link } from 'react-router-dom';
 
 interface EventCardProps {

@@ -37,15 +37,15 @@ cp .env.example .env
 
 2. **Start all services:**
 ```bash
-# For production build
+# Start in background
 docker-compose up -d
 
-# For development with hot reload
-docker-compose -f docker-compose.dev.yml up
+# Start in foreground (see logs)
+docker-compose up
 ```
 
 3. **Access the application:**
-   - Frontend: http://localhost:3000 (production) or http://localhost:5173 (development)
+   - Frontend: http://localhost:5173
    - Backend API: http://localhost:8000
    - API Docs: http://localhost:8000/docs
 
@@ -171,13 +171,14 @@ npm run dev
 The Docker Compose setup includes:
 
 - **PostgreSQL Database**: Persistent data storage
-- **Backend API**: FastAPI application with auto-reload in dev mode
-- **Frontend**: React application served via Nginx (production) or Vite dev server (development)
+- **Backend API**: FastAPI application with hot reload enabled
+- **Frontend**: React application with Vite dev server (hot reload enabled)
 
-### Development vs Production
-
-- **Development** (`docker-compose.dev.yml`): Hot reload enabled, volumes mounted for live code changes
-- **Production** (`docker-compose.yml`): Optimized builds, Nginx for frontend, no hot reload
+**Note:** This setup is optimized for development with hot reload. For production deployment, consider:
+- Using production Dockerfiles (Dockerfile instead of Dockerfile.dev)
+- Setting up Nginx reverse proxy
+- Disabling hot reload
+- Using environment-specific configurations
 
 ### Database Migrations
 

@@ -3,8 +3,8 @@
 help:
 	@echo "Available commands:"
 	@echo "  make build      - Build Docker images"
-	@echo "  make up         - Start all services (production)"
-	@echo "  make dev        - Start all services (development)"
+	@echo "  make up         - Start all services in background"
+	@echo "  make dev        - Start all services in foreground (see logs)"
 	@echo "  make down       - Stop all services"
 	@echo "  make restart    - Restart all services"
 	@echo "  make logs       - View logs from all services"
@@ -18,7 +18,7 @@ up:
 	docker-compose up -d
 
 dev:
-	docker-compose -f docker-compose.dev.yml up
+	docker-compose up
 
 down:
 	docker-compose down
@@ -31,7 +31,6 @@ logs:
 
 clean:
 	docker-compose down -v
-	docker-compose -f docker-compose.dev.yml down -v
 	docker system prune -f
 
 db-shell:

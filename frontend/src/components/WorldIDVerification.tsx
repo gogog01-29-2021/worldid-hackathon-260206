@@ -30,7 +30,6 @@ export function WorldIDVerification({ onSuccess, signal, disabled }: WorldIDVeri
       signal={signal}
       verification_level={VerificationLevel.Orb}
       onSuccess={handleVerify}
-      disabled={disabled}
     >
       {({ open }) => (
         <button
